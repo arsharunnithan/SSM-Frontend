@@ -1,0 +1,47 @@
+<div class="container">
+    <h2>Employee Registration</h2>
+    <form #registrationForm="ngForm" (ngSubmit)="registerEmployee()">
+        <small class="text-danger">{{message}}</small>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" placeholder="Enter email" name="email" [(ngModel)]="newEmployee.emailId" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" #email="ngModel"
+                [class.is-invalid]="email.invalid && email.touched"
+            >
+            <div *ngIf="email.errors && email.invalid && email.touched">
+                <small class="text-danger" *ngIf="email.errors.required">Email is required</small>
+                <small class="text-danger" *ngIf="email.errors.pattern">Enter a valid email</small>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="userName">Username:</label>
+            <input type="text" class="form-control" placeholder="Enter userName" name="userName" [(ngModel)]="newEmployee.userName" required #userName="ngModel"
+                [class.is-invalid]="userName.invalid && userName.touched"
+            >
+            <small class="text-danger" [class.d-none]="userName.valid || userName.untouched">Username is required</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" placeholder="Enter password" name="password" [(ngModel)]="newEmployee.password" #password="ngModel" required
+                [class.is-invalid]="password.invalid && password.touched"
+            >
+            <small class="text-danger" [class.d-none]="password.valid || password.untouched">Password is required</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="confirmPwd">Confirm Password:</label>
+            <input type="password" class="form-control" placeholder="Confirm password" name="confirmPwd" #confirmPwd="ngModel" (ngModel)="newEmployee.password" required
+                [class.is-invalid]="confirmPwd.invalid && confirmPwd.touched"
+            >
+            <small class="text-danger" [class.d-none]="(confirmPwd.value == password.value) || confirmPwd.untouched">Passwords do not match</small>
+
+            <!-- <div *ngIf="registrationForm.form.errors?.passwordMismatch">
+                <small class="text-danger">Passwords do not match</small>
+            </div> -->
+        </div>
+        
+        <button [disabled]="registrationForm.form.invalid" type="submit" class="btn btn-info">Register</button>
+    </form>
+</div>

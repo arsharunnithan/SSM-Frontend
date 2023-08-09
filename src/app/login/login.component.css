@@ -1,0 +1,84 @@
+/* styles.css */
+.container {
+    max-width: 400px;
+    margin: 100px auto; /* Adjust the margin-top value to center the container */
+    padding: 20px;
+    background-color: #f6f8e2;
+    border: 1px solid #e0ddca;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #f57c51;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    font-weight: bold;
+    color: #f57c51;
+  }
+  
+  .form-control {
+    border: 1px solid #e0ddca;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .form-control:focus {
+    border-color: #fcbc58;
+  }
+  
+  .text-danger {
+    color: #f57c51;
+    font-size: 12px;
+  }
+  
+  .checkbox label {
+    color: #f57c51;
+  }
+  
+  .btn-info {
+    background-color: #fcbc58;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .btn-info:hover {
+    background-color: #f57c51;
+  }
+  
+  .float-end {
+    color: #f57c51;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .float-end:hover {
+    text-decoration: underline;
+  }
+  
+  /* Additional Styles for Checkbox Alignment */
+  .checkbox label {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Optional: Style for Remember Me Checkbox */
+  .checkbox input[type="checkbox"] {
+    margin-right: 5px;
+    transform: translateY(1px); /* Align the checkbox with the text */
+  }
+  
