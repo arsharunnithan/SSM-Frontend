@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="sign-out-button">
+    <button type="button" class="btn btn-success" (click)="signOut()">Sign Out</button>
+  </div>
+  <h2>Product List</h2>
+  <p>Welcome to the Product List Page! <br>
+      This page is designed to help our dedicated team of employees manage our store's stock effectively. Here, you have a comprehensive view of all the products available in our inventory. <br>
+      Thank you for your commitment to maintaining our store's stock. Your efforts contribute to our success and seamless operations
+   </p>            
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of productList">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.description }}</td>
+      <td class="product-actions">
+      <button type="button" class="btn btn-primary" (click)="goToUpdateProduct(product.id)">Edit</button>&nbsp;
+      <button type="button" class="btn btn-secondary" (click)="goToViewProduct(product.id)">View</button>&nbsp;
+      <button type="button" class="btn btn-danger" (click)="deleteProduct(product.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="add-product-button">
+  <button type="button" class="btn btn-success" (click)="navigateToAddProduct()">Add new Product</button>
+</div>
+
+</div>

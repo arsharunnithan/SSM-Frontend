@@ -7,14 +7,21 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginSucessComponent } from './login-sucess/login-sucess.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { EditproductComponent } from './edit-product/edit-product.component';
+import { ViewproductComponent } from './view-product/view-product.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    LoginSucessComponent
+    AddProductComponent,
+    ProductListComponent,
+    EditproductComponent,
+    ViewproductComponent,
   ],
   imports: [
     BrowserModule,

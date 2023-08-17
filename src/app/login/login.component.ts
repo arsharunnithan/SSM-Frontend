@@ -12,15 +12,15 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 employee = new Employee();
 message = '';
-  constructor(private _serive : RegistrationService, private _router : Router){}
+  constructor(private _service : RegistrationService, private _router : Router){}
 
   ngOnInit(){}
 
   loginEmployee(){
-    this._serive.loginEmployeeFromRemote(this.employee).subscribe(
+    this._service.loginEmployeeFromRemote(this.employee).subscribe(
       data => {
         console.log("response recieved");
-        this._router.navigate(['/loginSucess'])
+        this._router.navigate(['/product-list'])
       },
       error => {
         console.log("exception occured");
