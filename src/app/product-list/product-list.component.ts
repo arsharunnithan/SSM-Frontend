@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone, OnInit } from '@angular/core';
 import { CrudServiceService } from '../crud-service.service';
 import { Router } from '@angular/router';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-product-list',
@@ -8,9 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit{
-  productList:any
+  productList: Product[];
   
-  constructor(private _service:CrudServiceService, private _router : Router) {}
+  constructor(private _service:CrudServiceService, private _router : Router, private cdRef: ChangeDetectorRef, private ngZone: NgZone) {}
 
   ngOnInit(){
 
@@ -32,23 +33,28 @@ export class ProductListComponent implements OnInit{
     console.log("id: "+ id);
     this._router.navigate(['/edit-product', id]);
   }
-
-
   goToViewProduct(id: number){
     this._router.navigate(['/view-product', id]);
 
   }
-
   deleteProduct(id: number) {
   this._service.deleteProductByIdFromRemote(id).subscribe(
-    data =>{
-      console.debug("Deleted succesfully");
-      this._router.navigate(['/product-list'])
+    data => {
+      if (data.message) {
+        console.debug("Deleted successfully");
+        this.productList = this.productList.filter(product => product.id !== id);
+        this.ngZone.run(() => {
+          this.cdRef.detectChanges();
+        });
+      } else {
+        console.log("Deletion error:", data.error);
+      }
     },
-    error=> {console.log("Exception occured"); 
-  }
-   )
-  }
+    error => {
+      console.log("Error occurred:", error);
+    }
+  );
+}
   signOut(){
     this._router.navigate([''])
   }
